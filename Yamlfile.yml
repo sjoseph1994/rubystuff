@@ -1,0 +1,31 @@
+users:
+  person1:
+    first_name: "Scott"
+    surname: "Joseph"
+    dob: "21 Mar 1994"
+    emails:
+      - Scottjj@outlook.com
+      - s.joseph@spartaglobal.com
+    phone_numbers:
+      - 07576334577
+      - 07312456754
+  person2:
+    first_name: "Abdi"
+    surname: "TheKid"
+    dob: "31st October 1994"
+    emails:
+      - AbdiRR@outlook.com
+      - a.Abdi@spartaglobal.com
+    phone_numbers:
+      - 07876234577
+      - 07312456754
+  person3:
+    first_name: "Barack"
+    surname: "Obama"
+    dob: "4th August 1994"
+    emails:
+      - BarackObama@Whitehouse.com
+      - BarackSpare@Whitehouse.com
+    phone_numbers:
+      - 07853213454
+      - 07657743213

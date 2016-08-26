@@ -16,10 +16,6 @@ class Person
     @emails, @phone_numbers = [], []
   end
 
-  # def get_full_name 
-  #   return @fullname
-  # end
-
   #Setters
   def add_email(your_email)
     @emails.push(your_email)
@@ -57,23 +53,24 @@ class Person
 end
 
 def create_users 
-  @scott = Person.new "Scott","Joseph","21st March 1994"
-  @scott.add_phone("07543421345")
-  @scott.add_phone("07543422115")
-  @scott.add_email("scott@bnjhgfgfh.com")
-  @scott.add_email("rfdfgutvh@uytcgcfhvjb.com")
+  # @scott = Person.new "Scott","Joseph","21st March 1994"
+  # @scott.add_phone("07543421345")
+  # @scott.add_phone("07543422115")
+  # @scott.add_email("scott@bnjhgfgfh.com")
+  # @scott.add_email("rfdfgutvh@uytcgcfhvjb.com")
 
-  @abdi = Person.new "Abdi","TheKid","31st October 1994"
-  @abdi.add_phone("07454261523")
-  @abdi.add_phone("07643221123")
-  @abdi.add_email("abdi@bnjhgfgfh.com")
-  @abdi.add_email("rcvjkervkercere.com")
+  # @abdi = Person.new "Abdi","TheKid","31st October 1994"
+  # @abdi.add_phone("07454261523")
+  # @abdi.add_phone("07643221123")
+  # @abdi.add_email("abdi@bnjhgfgfh.com")
+  # @abdi.add_email("rcvjkervkercere.com")
 
-  @Obama = FamilyMember.new "Barack","Obama","4th August 1994"
-  @Obama.add_phone("07853213454")
-  @Obama.add_phone("07657743213")
-  @Obama.add_email("BarackObama@Whitehouse.com")
-  @Obama.add_email("BarackSpare@Whitehouse.com")
+  # @Obama = FamilyMember.new "Barack","Obama","4th August 1994"
+  # @Obama.add_phone("07853213454")
+  # @Obama.add_phone("07657743213")
+  # @Obama.add_email("BarackObama@Whitehouse.com")
+  # @Obama.add_email("BarackSpare@Whitehouse.com")
+
 end
 
 #-------------------------------------------------------------#
@@ -96,7 +93,7 @@ class AddressBook
   end
 
   def add(person)
-    person.is_a?(Person) || person.is_a?(FamilyMember) ? @list << person.fullname : "Make sure it's a person or family Family Member"
+    person.is_a?(Person) || person.is_a?(FamilyMember) ? @list << person : "Make sure it's a person or family Family Member"
       
   end
 
@@ -105,17 +102,37 @@ class AddressBook
     puts "------------"
     @list.each_with_index do |item, index|
       print "Entry #{index + 1}: "
-      puts item
+      puts item.fullname
     end
   end
-end
 
+  def load_yaml(person)
+    my_yaml = YAML.load_file "Yamlfile.yml"
+    first_name = my_yaml['users']["person#{person}"]['first_name']
+    surname = my_yaml['users']["person#{person}"]['surname']
+    dob = my_yaml['users']["person#{person}"]['dob']
+    email1 = my_yaml['users']["person#{person}"]['emails'][0]
+    email2 = my_yaml['users']["person#{person}"]['emails'][1]
+    phone_number1 = my_yaml['users']["person#{person}"]['phone_numbers'][0]
+    phone_number2 = my_yaml['users']["person#{person}"]['phone_numbers'][1]
+
+    person = Person.new(first_name, surname, dob)
+    person.add_email(email1)
+    person.add_email(email2)
+    person.add_phone(phone_number1)
+    person.add_phone(phone_number2)
+
+    @list << person
+  end
+end
 #-------------------------------------------------------------#
 
 #main
+
 # create_users
 # @book = AddressBook.new
 # @book.add(@abdi)
 # @book.add(@scott)
 # @book.add(@Obama)
+
 

@@ -1,7 +1,4 @@
-require 'rspec'
-require 'date'
-require 'pry'
-require './application.rb'
+require 'colorize'
 
 
 RSpec.configure do |config|
